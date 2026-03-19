@@ -1,0 +1,31 @@
+/*
+Problem: 45. Jump Game II
+Approach: Greedy (Range Expansion)
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+*/
+
+class Solution {
+
+    public int jump(int[] nums) {
+
+        int jumps = 0;
+        int currentEnd = 0;
+        int farthest = 0;
+
+        for(int i = 0; i < nums.length - 1; i++){
+
+            // update the farthest reachable index
+            farthest = Math.max(farthest, i + nums[i]);
+
+            // if we reach the end of current jump range
+            if(i == currentEnd){
+                jumps++;
+                currentEnd = farthest;
+            }
+        }
+
+        return jumps;
+    }
+}
